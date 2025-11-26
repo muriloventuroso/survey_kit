@@ -23,6 +23,6 @@ Map<String, dynamic> _$MarkdownContentToJson(MarkdownContent instance) {
 
   writeNotNull('id', instance.id);
   val['text'] = instance.text;
-  val['type'] = instance.type;
+  val['type'] = MarkdownContent.type;
   return val;
 }

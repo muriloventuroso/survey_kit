@@ -36,6 +36,6 @@ Map<String, dynamic> _$VideoContentToJson(VideoContent instance) {
   val['title'] = instance.title;
   val['subtitle'] = instance.subtitle;
   val['externalLink'] = instance.externalLink;
-  val['type'] = instance.type;
+  val['type'] = VideoContent.type;
   return val;
 }

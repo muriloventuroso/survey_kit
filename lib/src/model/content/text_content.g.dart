@@ -27,7 +27,7 @@ Map<String, dynamic> _$TextContentToJson(TextContent instance) {
   val['text'] = instance.text;
   val['fontSize'] = instance.fontSize;
   val['textAlign'] = _$TextAlignEnumMap[instance.textAlign]!;
-  val['type'] = instance.type;
+  val['type'] = TextContent.type;
   return val;
 }
 
