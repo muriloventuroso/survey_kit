@@ -10,11 +10,13 @@ import 'package:survey_kit/src/view/widget/question_answer.dart';
 class ScaleAnswerView extends StatefulWidget {
   final Step questionStep;
   final StepResult? result;
+  final ScaleAnswerFormatType type;
 
   const ScaleAnswerView({
     Key? key,
     required this.questionStep,
     required this.result,
+    required this.type,
   }) : super(key: key);
 
   @override
@@ -35,6 +37,118 @@ class _ScaleAnswerViewState extends State<ScaleAnswerView>
     _scaleAnswerFormat = answer as ScaleAnswerFormat;
   }
 
+  Widget _buildStarRating(BuildContext context, double result) {
+    final starCount = _scaleAnswerFormat.maximumValue.toInt();
+    final selectedStars = result.toInt();
+
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(14.0),
+          child: Text(
+            result.toInt().toString(),
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(starCount, (index) {
+            final starValue = index + 1;
+            return GestureDetector(
+              onTap: () {
+                setState(() {
+                  onChange(starValue.toDouble());
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: Icon(
+                  starValue <= selectedStars ? Icons.star : Icons.star_border,
+                  size: 48.0,
+                  color:
+                      starValue <= selectedStars ? Colors.amber : Colors.grey,
+                ),
+              ),
+            );
+          }),
+        ),
+        if (_scaleAnswerFormat.minimumValueDescription.isNotEmpty ||
+            _scaleAnswerFormat.maximumValueDescription.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0, left: 32.0, right: 32.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                if (_scaleAnswerFormat.minimumValueDescription.isNotEmpty)
+                  Text(
+                    _scaleAnswerFormat.minimumValueDescription,
+                    style: const TextStyle(fontSize: 14.0),
+                  ),
+                if (_scaleAnswerFormat.maximumValueDescription.isNotEmpty)
+                  Text(
+                    _scaleAnswerFormat.maximumValueDescription,
+                    style: const TextStyle(fontSize: 14.0),
+                  ),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _buildSliderScale(BuildContext context, double result) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(14.0),
+          child: Text(
+            result.toInt().toString(),
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+        ),
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    _scaleAnswerFormat.minimumValueDescription,
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  Text(
+                    _scaleAnswerFormat.maximumValueDescription,
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Slider.adaptive(
+              value: result,
+              onChanged: (double value) {
+                setState(() {
+                  onChange(value);
+                });
+              },
+              min: _scaleAnswerFormat.minimumValue,
+              max: _scaleAnswerFormat.maximumValue,
+              activeColor: Theme.of(context).primaryColor,
+              divisions: (_scaleAnswerFormat.maximumValue -
+                      _scaleAnswerFormat.minimumValue) ~/
+                  _scaleAnswerFormat.step,
+              label: result.toString(),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final result = QuestionAnswer.of(context).stepResult?.result as double? ??
@@ -47,52 +161,10 @@ class _ScaleAnswerViewState extends State<ScaleAnswerView>
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           if (questionText != null) AnswerQuestionText(text: questionText),
-          Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: Text(
-              result.toInt().toString(),
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-          ),
-          Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      _scaleAnswerFormat.minimumValueDescription,
-                      style: const TextStyle(
-                        fontSize: 16.0,
-                      ),
-                    ),
-                    Text(
-                      _scaleAnswerFormat.maximumValueDescription,
-                      style: const TextStyle(
-                        fontSize: 16.0,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Slider.adaptive(
-                value: result,
-                onChanged: (double value) {
-                  setState(() {
-                    onChange(value);
-                  });
-                },
-                min: _scaleAnswerFormat.minimumValue,
-                max: _scaleAnswerFormat.maximumValue,
-                activeColor: Theme.of(context).primaryColor,
-                divisions: (_scaleAnswerFormat.maximumValue -
-                        _scaleAnswerFormat.minimumValue) ~/
-                    _scaleAnswerFormat.step,
-                label: result.toString(),
-              ),
-            ],
-          ),
+          if (widget.type == ScaleAnswerFormatType.rating)
+            _buildStarRating(context, result)
+          else
+            _buildSliderScale(context, result),
         ],
       ),
     );

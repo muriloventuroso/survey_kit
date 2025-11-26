@@ -25,6 +25,7 @@ class QuestionAnswer<R> extends InheritedWidget {
     _stepResult = StepResult<R>(
       id: step.id,
       step: step,
+      title: step.answerFormat?.question,
       result: result,
       startTime: startTime,
       endTime: DateTime.now(),

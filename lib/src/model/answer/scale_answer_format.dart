@@ -4,6 +4,11 @@ import 'package:survey_kit/survey_kit.dart';
 
 part 'scale_answer_format.g.dart';
 
+enum ScaleAnswerFormatType {
+  scale,
+  rating,
+}
+
 @JsonSerializable()
 class ScaleAnswerFormat extends AnswerFormat {
   static const String type = 'scale';
@@ -14,6 +19,7 @@ class ScaleAnswerFormat extends AnswerFormat {
   final double step;
   final String maximumValueDescription;
   final String minimumValueDescription;
+  final ScaleAnswerFormatType formatType;
 
   const ScaleAnswerFormat({
     required this.maximumValue,
@@ -24,6 +30,7 @@ class ScaleAnswerFormat extends AnswerFormat {
     this.minimumValueDescription = '',
     super.question,
     super.answerType = type,
+    this.formatType = ScaleAnswerFormatType.scale,
   }) : super();
 
   factory ScaleAnswerFormat.fromJson(Map<String, dynamic> json) =>
@@ -35,6 +42,7 @@ class ScaleAnswerFormat extends AnswerFormat {
     return ScaleAnswerView(
       questionStep: step,
       result: stepResult,
+      type: formatType,
     );
   }
 }

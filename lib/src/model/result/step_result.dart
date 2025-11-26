@@ -10,6 +10,7 @@ part 'step_result.g.dart';
 @CustomDateTimeConverter()
 class StepResult<T> {
   final String id;
+  final String? title;
   final Step step;
   final T? result;
   final DateTime startTime;
@@ -19,6 +20,7 @@ class StepResult<T> {
 
   const StepResult({
     required this.id,
+    this.title,
     required this.result,
     required this.startTime,
     required this.endTime,
@@ -29,6 +31,7 @@ class StepResult<T> {
   factory StepResult.fromQuestion({required StepResult questionResult}) {
     return StepResult(
       id: questionResult.id,
+      title: questionResult.title,
       step: questionResult.step,
       startTime: questionResult.startTime,
       endTime: questionResult.endTime,
