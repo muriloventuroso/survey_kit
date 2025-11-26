@@ -160,9 +160,13 @@ class _SurveyPageState extends State<SurveyPage>
 
   @override
   Widget build(BuildContext context) {
+    final progressbarConfiguration =
+        SurveyConfiguration.of(context).surveyProgressConfiguration;
     return Scaffold(
       backgroundColor: widget.backgroundColor,
-      appBar: widget.appBar ?? const SurveyAppBar(),
+      appBar: progressbarConfiguration.showAppBar
+          ? widget.appBar ?? const SurveyAppBar()
+          : null,
       body: Container(
         decoration: widget.decoration,
         child: Navigator(

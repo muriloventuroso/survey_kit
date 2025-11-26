@@ -15,6 +15,9 @@ class _SurveyProgressState extends State<SurveyProgress> {
   Widget build(BuildContext context) {
     final progressbarConfiguration =
         SurveyConfiguration.of(context).surveyProgressConfiguration;
+    if (!progressbarConfiguration.showProgressbar) {
+      return const SizedBox.shrink();
+    }
     return StreamBuilder<SurveyState>(
       stream: SurveyStateProvider.of(context).surveyStateStream.stream,
       builder: (context, snapshot) {
