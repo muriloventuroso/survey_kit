@@ -43,13 +43,6 @@ class _ScaleAnswerViewState extends State<ScaleAnswerView>
 
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(14.0),
-          child: Text(
-            result.toInt().toString(),
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(starCount, (index) {
@@ -151,8 +144,11 @@ class _ScaleAnswerViewState extends State<ScaleAnswerView>
 
   @override
   Widget build(BuildContext context) {
-    final result = QuestionAnswer.of(context).stepResult?.result as double? ??
-        _scaleAnswerFormat.defaultValue;
+    var result = QuestionAnswer.of(context).stepResult?.result as double?;
+    if (result == null) {
+      result = _scaleAnswerFormat.defaultValue;
+      QuestionAnswer.of(context).setStepResult(result);
+    }
     final questionText = widget.questionStep.answerFormat?.question;
     return Padding(
       padding: const EdgeInsets.all(14.0),
