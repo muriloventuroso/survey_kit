@@ -13,6 +13,8 @@ class Step {
   final AnswerFormat? answerFormat;
   @JsonKey(defaultValue: 'Next', includeIfNull: false)
   final String? buttonText;
+  @JsonKey(defaultValue: false)
+  final bool autoNext;
   final List<Content> content;
   @JsonKey(includeFromJson: false, includeToJson: false)
   final StepShell? stepShell;
@@ -23,6 +25,7 @@ class Step {
     this.isMandatory = true,
     this.answerFormat,
     this.buttonText,
+    this.autoNext = false,
     this.stepShell,
   }) : id = id ?? const Uuid().v4();
 

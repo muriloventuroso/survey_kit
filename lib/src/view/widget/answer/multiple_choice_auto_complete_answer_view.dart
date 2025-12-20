@@ -60,8 +60,8 @@ class _MultipleChoiceAutoCompleteAnswerViewState
           const SizedBox(
             height: 32,
           ),
-          const Divider(
-            color: Colors.grey,
+          Divider(
+            color: Theme.of(context).colorScheme.outline.withValues(alpha: .5),
           ),
           ..._multipleChoiceAnswer.textChoices
               .map(
@@ -126,8 +126,9 @@ class _MultipleChoiceAutoCompleteAnswerViewState
                 ),
               ),
             ),
-            const Divider(
-              color: Colors.grey,
+            Divider(
+              color:
+                  Theme.of(context).colorScheme.outline.withValues(alpha: .5),
             ),
           ],
         ],

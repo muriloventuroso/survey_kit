@@ -20,4 +20,7 @@ class TextChoice {
       _$TextChoiceFromJson(json);
 
   Map<String, dynamic> toJson() => _$TextChoiceToJson(this);
+
+  @override
+  String toString() => value ?? '';
 }

@@ -64,8 +64,8 @@ class _BooleanAnswerViewState extends State<BooleanAnswerView>
     return Column(
       children: [
         if (questionText != null) AnswerQuestionText(text: questionText),
-        const Divider(
-          color: Colors.grey,
+        Divider(
+          color: Theme.of(context).colorScheme.outline.withValues(alpha: .5),
         ),
         SelectionListTile(
           text: _answerFormat.positiveAnswer,

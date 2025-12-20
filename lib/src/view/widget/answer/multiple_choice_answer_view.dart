@@ -61,8 +61,8 @@ class _MultipleChoiceAnswerView extends State<MultipleChoiceAnswerView>
       child: Column(
         children: [
           if (questionText != null) AnswerQuestionText(text: questionText),
-          const Divider(
-            color: Colors.grey,
+          Divider(
+            color: Theme.of(context).colorScheme.outline.withValues(alpha: .5),
           ),
           ..._multipleChoiceAnswer.textChoices
               .map(
@@ -124,8 +124,9 @@ class _MultipleChoiceAnswerView extends State<MultipleChoiceAnswerView>
                 ),
               ),
             ),
-            const Divider(
-              color: Colors.grey,
+            Divider(
+              color:
+                  Theme.of(context).colorScheme.outline.withValues(alpha: .5),
             ),
           ],
         ],

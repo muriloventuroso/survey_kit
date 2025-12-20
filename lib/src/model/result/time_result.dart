@@ -11,6 +11,9 @@ class TimeResult {
   const TimeResult({
     required this.timeOfDay,
   });
+
+  @override
+  String toString() => timeOfDay.toString();
 }
 
 class _TimeOfDayConverter extends JsonConverter<TimeOfDay, String?> {

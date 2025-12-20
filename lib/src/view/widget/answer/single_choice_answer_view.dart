@@ -69,8 +69,8 @@ class _SingleChoiceAnswerViewState extends State<SingleChoiceAnswerView>
       child: Column(
         children: [
           if (questionText != null) AnswerQuestionText(text: questionText),
-          const Divider(
-            color: Colors.grey,
+          Divider(
+            color: Theme.of(context).colorScheme.outline.withValues(alpha: .5),
           ),
           ..._singleChoiceAnswerFormat.textChoices.map(
             (TextChoice tc) {

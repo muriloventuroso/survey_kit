@@ -16,6 +16,7 @@ Step _$StepFromJson(Map<String, dynamic> json) => Step(
           ? null
           : AnswerFormat.fromJson(json['answerFormat'] as Map<String, dynamic>),
       buttonText: json['buttonText'] as String? ?? 'Next',
+      autoNext: json['autoNext'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$StepToJson(Step instance) {
@@ -32,6 +33,7 @@ Map<String, dynamic> _$StepToJson(Step instance) {
   }
 
   writeNotNull('buttonText', instance.buttonText);
+  val['autoNext'] = instance.autoNext;
   val['content'] = instance.content;
   return val;
 }
