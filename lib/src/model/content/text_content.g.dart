@@ -53,7 +53,5 @@ const _$FontWeightEnumMap = {
   FontWeight.w600: 'w600',
   FontWeight.w700: 'w700',
   FontWeight.w800: 'w800',
-  FontWeight.w900: 'w900',
-  FontWeight.normal: 'normal',
-  FontWeight.bold: 'bold',
+  FontWeight.w900: 'w900'
 };
