@@ -12,11 +12,13 @@ class TextContent extends Content {
   final String text;
   final double fontSize;
   final TextAlign textAlign;
+  final FontWeight fontWeight;
 
   const TextContent({
     required this.text,
     this.fontSize = 16,
     this.textAlign = TextAlign.center,
+    this.fontWeight = FontWeight.normal,
     super.id,
   }) : super(contentType: type);
 

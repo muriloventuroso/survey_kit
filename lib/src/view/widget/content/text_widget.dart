@@ -16,6 +16,7 @@ class TextWidget extends StatelessWidget {
       textAlign: textContent.textAlign,
       style: TextStyle(
         fontSize: textContent.fontSize,
+        fontWeight: textContent.fontWeight,
       ),
     );
   }

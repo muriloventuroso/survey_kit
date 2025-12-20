@@ -23,7 +23,7 @@ class SelectionListTile extends StatelessWidget {
               text,
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     color: isSelected
-                        ? Theme.of(context).primaryColor
+                        ? Theme.of(context).colorScheme.primary
                         : Theme.of(context).textTheme.headlineSmall?.color,
                   ),
             ),
@@ -32,8 +32,8 @@ class SelectionListTile extends StatelessWidget {
                     Icons.check,
                     size: 32,
                     color: isSelected
-                        ? Theme.of(context).primaryColor
-                        : Colors.black,
+                        ? Theme.of(context).colorScheme.primary
+                        : Theme.of(context).colorScheme.onSurface,
                   )
                 : Container(
                     width: 32,
@@ -42,8 +42,8 @@ class SelectionListTile extends StatelessWidget {
             onTap: onTap,
           ),
         ),
-        const Divider(
-          color: Colors.grey,
+        Divider(
+          color: Theme.of(context).colorScheme.outline.withValues(alpha: .5),
         ),
       ],
     );
