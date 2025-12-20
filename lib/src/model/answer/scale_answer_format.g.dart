@@ -15,7 +15,7 @@ ScaleAnswerFormat _$ScaleAnswerFormatFromJson(Map<String, dynamic> json) =>
       maximumValueDescription: json['maximumValueDescription'] as String? ?? '',
       minimumValueDescription: json['minimumValueDescription'] as String? ?? '',
       question: json['question'] as String?,
-      answerType: json['type'] as String? ?? type,
+      answerType: json['type'] as String?,
       formatType: $enumDecodeNullable(
               _$ScaleAnswerFormatTypeEnumMap, json['formatType']) ??
           ScaleAnswerFormatType.scale,

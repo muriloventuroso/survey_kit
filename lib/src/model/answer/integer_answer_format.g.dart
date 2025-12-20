@@ -13,7 +13,7 @@ IntegerAnswerFormat _$IntegerAnswerFormatFromJson(Map<String, dynamic> json) =>
       min: (json['min'] as num?)?.toInt() ?? minInt,
       max: (json['max'] as num?)?.toInt() ?? maxInt,
       question: json['question'] as String?,
-      answerType: json['type'] as String? ?? type,
+      answerType: json['type'] as String?,
     );
 
 Map<String, dynamic> _$IntegerAnswerFormatToJson(
