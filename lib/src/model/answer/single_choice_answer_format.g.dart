@@ -17,7 +17,7 @@ SingleChoiceAnswerFormat _$SingleChoiceAnswerFormatFromJson(
           : TextChoice.fromJson(
               json['defaultSelection'] as Map<String, dynamic>),
       question: json['question'] as String?,
-      answerType: json['type'] as String?,
+      answerType: json['type'] as String? ?? type,
     );
 
 Map<String, dynamic> _$SingleChoiceAnswerFormatToJson(

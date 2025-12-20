@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:survey_kit/src/model/content/content.dart';
+import 'package:survey_kit/src/util/font_weight_converter.dart';
 import 'package:survey_kit/src/view/widget/content/text_widget.dart';
 
 part 'text_content.g.dart';
@@ -12,6 +13,7 @@ class TextContent extends Content {
   final String text;
   final double fontSize;
   final TextAlign textAlign;
+  @FontWeightConverter()
   final FontWeight fontWeight;
 
   const TextContent({

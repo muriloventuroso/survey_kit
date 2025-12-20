@@ -19,5 +19,4 @@ Map<String, dynamic> _$SectionContentToJson(SectionContent instance) =>
       'title': instance.title,
       'subtitle': instance.subtitle,
       'text': instance.text,
-      'type': SectionContent.type,
     };

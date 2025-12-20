@@ -22,5 +22,4 @@ Map<String, dynamic> _$StyledTextContentToJson(StyledTextContent instance) =>
       'bold': instance.bold,
       'italic': instance.italic,
       'underlined': instance.underlined,
-      'type': StyledTextContent.type,
     };

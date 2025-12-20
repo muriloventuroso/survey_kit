@@ -15,10 +15,10 @@ ScaleAnswerFormat _$ScaleAnswerFormatFromJson(Map<String, dynamic> json) =>
       maximumValueDescription: json['maximumValueDescription'] as String? ?? '',
       minimumValueDescription: json['minimumValueDescription'] as String? ?? '',
       question: json['question'] as String?,
-      answerType: json['type'] as String?,
-      formatType: json['formatType'] == 'rating'
-          ? ScaleAnswerFormatType.rating
-          : ScaleAnswerFormatType.scale,
+      answerType: json['type'] as String? ?? type,
+      formatType: $enumDecodeNullable(
+              _$ScaleAnswerFormatTypeEnumMap, json['formatType']) ??
+          ScaleAnswerFormatType.scale,
     );
 
 Map<String, dynamic> _$ScaleAnswerFormatToJson(ScaleAnswerFormat instance) =>
@@ -31,5 +31,10 @@ Map<String, dynamic> _$ScaleAnswerFormatToJson(ScaleAnswerFormat instance) =>
       'step': instance.step,
       'maximumValueDescription': instance.maximumValueDescription,
       'minimumValueDescription': instance.minimumValueDescription,
-      'formatType': instance.formatType.name,
+      'formatType': _$ScaleAnswerFormatTypeEnumMap[instance.formatType]!,
     };
+
+const _$ScaleAnswerFormatTypeEnumMap = {
+  ScaleAnswerFormatType.scale: 'scale',
+  ScaleAnswerFormatType.rating: 'rating',
+};
