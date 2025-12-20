@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:survey_kit/src/widget/platform_view_registry/platform_view_registry.dart';
-import 'package:universal_html/html.dart' as html;
+import 'package:web/web.dart' as web;
 
 // TODO(rinzin): Temporary fix for web until
 // [https://github.com/fluttercommunity/chewie/issues/688]
@@ -38,20 +38,20 @@ class _WebVideoPlayerState extends State<WebVideoPlayer> {
       widget.src,
       (int viewId) {
         final url = '${widget.src}' '#t=${widget.startAt}';
-        final video = html.VideoElement()
+        final video = web.HTMLVideoElement()
           ..src = url
           ..autoplay = widget.autoplay
           ..loop = widget.loop
-          ..controls = widget.controls
-          ..style.border = 'none'
-          ..style.height = '100%'
-          ..style.width = '100%'
+          ..controls = widget.controls;
 
-          //Remove the download option from controls
+        video.style.border = 'none';
+        video.style.height = '100%';
+        video.style.width = '100%';
+
+        // Remove the download option from controls
+        // Allows Safari iOS to play the video inline
+        video
           ..setAttribute('controlsList', 'nodownload')
-
-          // Allows Safari iOS to play the video inline
-          // ignore: cascade_invocations
           ..setAttribute('playsinline', 'true');
 
         return video;
