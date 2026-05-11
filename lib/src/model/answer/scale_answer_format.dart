@@ -29,6 +29,7 @@ class ScaleAnswerFormat extends AnswerFormat {
     this.maximumValueDescription = '',
     this.minimumValueDescription = '',
     super.question,
+    super.questionContent,
     super.answerType = type,
     this.formatType = ScaleAnswerFormatType.scale,
   }) : super();

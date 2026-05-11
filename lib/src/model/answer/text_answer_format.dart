@@ -25,6 +25,7 @@ class TextAnswerFormat extends AnswerFormat {
     this.hint = '',
     this.validationRegEx = r'^(?!s*$).+',
     super.question,
+    super.questionContent,
     super.answerType = type,
   }) : super();
 

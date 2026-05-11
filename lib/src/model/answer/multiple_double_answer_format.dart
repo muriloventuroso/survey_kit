@@ -20,6 +20,7 @@ class MultipleDoubleAnswerFormat extends AnswerFormat {
     this.defaultValues,
     required this.hints,
     super.question,
+    super.questionContent,
     super.answerType = type,
   }) : super();
 

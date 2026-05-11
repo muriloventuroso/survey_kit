@@ -66,12 +66,18 @@ class _DateAnswerViewState extends State<DateAnswerView>
   }
 
   Widget _androidDatePicker() {
-    final questionText = widget.questionStep.answerFormat?.question;
+    final answerFormat = widget.questionStep.answerFormat;
+    final questionText = answerFormat?.question;
+    final questionContent = answerFormat?.questionContent;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (questionText != null) AnswerQuestionText(text: questionText),
+        if (questionText != null || questionContent != null)
+          AnswerQuestionText(
+            text: questionText,
+            textContent: questionContent,
+          ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14.0),
           child: Stack(

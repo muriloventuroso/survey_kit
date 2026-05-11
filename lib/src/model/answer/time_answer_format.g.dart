@@ -9,21 +9,28 @@ part of 'time_answer_format.dart';
 TimeAnswerFormat _$TimeAnswerFormatFromJson(Map<String, dynamic> json) =>
     TimeAnswerFormat(
       defaultValue: _$JsonConverterFromJson<Map<String, dynamic>, TimeOfDay?>(
-          json['defaultValue'], const _TimeOfDayJsonConverter().fromJson),
+        json['defaultValue'],
+        const _TimeOfDayJsonConverter().fromJson,
+      ),
       question: json['question'] as String?,
-      answerType: json['type'] as String?,
+      questionContent: json['questionContent'] == null
+          ? null
+          : TextContent.fromJson(
+              json['questionContent'] as Map<String, dynamic>,
+            ),
+      answerType: json['type'] as String? ?? type,
     );
 
-Map<String, dynamic> _$TimeAnswerFormatToJson(TimeAnswerFormat instance) =>
-    <String, dynamic>{
-      'question': instance.question,
-      'type': instance.answerType,
-      'defaultValue':
-          const _TimeOfDayJsonConverter().toJson(instance.defaultValue),
-    };
+Map<String, dynamic> _$TimeAnswerFormatToJson(
+  TimeAnswerFormat instance,
+) => <String, dynamic>{
+  'question': instance.question,
+  'questionContent': instance.questionContent,
+  'type': instance.answerType,
+  'defaultValue': const _TimeOfDayJsonConverter().toJson(instance.defaultValue),
+};
 
 Value? _$JsonConverterFromJson<Json, Value>(
   Object? json,
   Value? Function(Json json) fromJson,
-) =>
-    json == null ? null : fromJson(json as Json);
+) => json == null ? null : fromJson(json as Json);

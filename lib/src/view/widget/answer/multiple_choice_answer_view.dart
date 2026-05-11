@@ -50,7 +50,9 @@ class _MultipleChoiceAnswerView extends State<MultipleChoiceAnswerView>
 
   @override
   Widget build(BuildContext context) {
-    final questionText = widget.questionStep.answerFormat?.question;
+    final answerFormat = widget.questionStep.answerFormat;
+    final questionText = answerFormat?.question;
+    final questionContent = answerFormat?.questionContent;
 
     final _selectedChoices =
         QuestionAnswer.of(context).stepResult?.result as List<TextChoice>? ??
@@ -60,7 +62,11 @@ class _MultipleChoiceAnswerView extends State<MultipleChoiceAnswerView>
       padding: const EdgeInsets.symmetric(horizontal: 14.0),
       child: Column(
         children: [
-          if (questionText != null) AnswerQuestionText(text: questionText),
+          if (questionText != null || questionContent != null)
+            AnswerQuestionText(
+              text: questionText,
+              textContent: questionContent,
+            ),
           Divider(
             color: Theme.of(context).colorScheme.outline.withValues(alpha: .5),
           ),

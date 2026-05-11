@@ -12,12 +12,18 @@ TextAnswerFormat _$TextAnswerFormatFromJson(Map<String, dynamic> json) =>
       hint: json['hint'] as String? ?? '',
       validationRegEx: json['validationRegEx'] as String? ?? r'^(?!s*$).+',
       question: json['question'] as String?,
-      answerType: json['type'] as String?,
+      questionContent: json['questionContent'] == null
+          ? null
+          : TextContent.fromJson(
+              json['questionContent'] as Map<String, dynamic>,
+            ),
+      answerType: json['type'] as String? ?? type,
     );
 
 Map<String, dynamic> _$TextAnswerFormatToJson(TextAnswerFormat instance) =>
     <String, dynamic>{
       'question': instance.question,
+      'questionContent': instance.questionContent,
       'type': instance.answerType,
       'maxLines': instance.maxLines,
       'hint': instance.hint,

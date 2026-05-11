@@ -26,6 +26,7 @@ class MultipleChoiceAutoCompleteAnswerFormat extends AnswerFormat {
     this.suggestions = const [],
     this.otherField = false,
     super.question,
+    super.questionContent,
     super.answerType = type,
   }) : super();
 

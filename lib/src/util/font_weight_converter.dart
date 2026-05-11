@@ -33,3 +33,4 @@ class FontWeightConverter implements JsonConverter<FontWeight, String> {
         .key;
   }
 }
+

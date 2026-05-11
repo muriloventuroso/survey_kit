@@ -62,13 +62,19 @@ class _SingleChoiceAnswerViewState extends State<SingleChoiceAnswerView>
 
   @override
   Widget build(BuildContext context) {
-    final questionText = widget.questionStep.answerFormat?.question;
+    final answerFormat = widget.questionStep.answerFormat;
+    final questionText = answerFormat?.question;
+    final questionContent = answerFormat?.questionContent;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14.0),
       child: Column(
         children: [
-          if (questionText != null) AnswerQuestionText(text: questionText),
+          if (questionText != null || questionContent != null)
+            AnswerQuestionText(
+              text: questionText,
+              textContent: questionContent,
+            ),
           Divider(
             color: Theme.of(context).colorScheme.outline.withValues(alpha: .5),
           ),

@@ -46,10 +46,7 @@ class _MultipleDoubleAnswerViewState extends State<MultipleDoubleAnswerView>
 
     _insertedValues = List.generate(
       _multipleDoubleAnswer.hints.length,
-      (index) => const MultiDouble(
-        text: '',
-        value: 0.0,
-      ),
+      (index) => const MultiDouble(text: '', value: 0.0),
     );
   }
 
@@ -68,29 +65,32 @@ class _MultipleDoubleAnswerViewState extends State<MultipleDoubleAnswerView>
 
   @override
   Widget build(BuildContext context) {
-    final questionText = widget.questionStep.answerFormat?.question;
+    final answerFormat = widget.questionStep.answerFormat;
+    final questionText = answerFormat?.question;
+    final questionContent = answerFormat?.questionContent;
     final questionAnswer = QuestionAnswer.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14.0),
       child: Column(
         children: [
-          if (questionText != null) AnswerQuestionText(text: questionText),
+          if (questionText != null || questionContent != null)
+            AnswerQuestionText(
+              text: questionText,
+              textContent: questionContent,
+            ),
           Divider(
             color: Theme.of(context).colorScheme.outline.withValues(alpha: .5),
           ),
-          ..._multipleDoubleAnswer.hints
-              .asMap()
-              .entries
-              .map((MapEntry<int, String> md) {
+          ..._multipleDoubleAnswer.hints.asMap().entries.map((
+            MapEntry<int, String> md,
+          ) {
             return TextField(
               textInputAction: TextInputAction.next,
               autofocus: true,
-              decoration: InputDecoration(
-                labelText: md.value,
-              ),
+              decoration: InputDecoration(labelText: md.value),
               controller: _controller[md.key],
-              onChanged: (String value) {
-                value = value.replaceAll(',', '.');
+              onChanged: (String val) {
+                final value = val.replaceAll(',', '.');
                 if (double.tryParse(value) == null) {
                   questionAnswer.setIsValid(false);
                   return;

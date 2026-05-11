@@ -11,14 +11,18 @@ import 'package:survey_kit/src/model/answer/scale_answer_format.dart';
 import 'package:survey_kit/src/model/answer/single_choice_answer_format.dart';
 import 'package:survey_kit/src/model/answer/text_answer_format.dart';
 import 'package:survey_kit/src/model/answer/time_answer_format.dart';
+import 'package:survey_kit/src/model/content/text_content.dart';
 import 'package:survey_kit/src/model/result/step_result.dart';
 import 'package:survey_kit/src/model/step.dart';
 
+part 'answer_format.g.dart';
+
 @JsonSerializable()
 abstract class AnswerFormat {
-  const AnswerFormat({this.answerType, this.question});
+  const AnswerFormat({this.answerType, this.question, this.questionContent});
 
   final String? question;
+  final TextContent? questionContent;
   @JsonKey(name: 'type')
   final String? answerType;
 

@@ -18,6 +18,7 @@ class MultipleChoiceAnswerFormat extends AnswerFormat {
     this.otherField = false,
     this.defaultSelection,
     super.question,
+    super.questionContent,
     super.answerType = type,
   }) : super();
 

@@ -60,10 +60,16 @@ class _BooleanAnswerViewState extends State<BooleanAnswerView>
 
   @override
   Widget build(BuildContext context) {
-    final questionText = widget.questionStep.answerFormat?.question;
+    final answerFormat = widget.questionStep.answerFormat;
+    final questionText = answerFormat?.question;
+    final questionContent = answerFormat?.questionContent;
     return Column(
       children: [
-        if (questionText != null) AnswerQuestionText(text: questionText),
+        if (questionText != null || questionContent != null)
+          AnswerQuestionText(
+            text: questionText,
+            textContent: questionContent,
+          ),
         Divider(
           color: Theme.of(context).colorScheme.outline.withValues(alpha: .5),
         ),

@@ -15,6 +15,7 @@ class SingleChoiceAnswerFormat extends AnswerFormat {
     required this.textChoices,
     this.defaultSelection,
     super.question,
+    super.questionContent,
     super.answerType = type,
   }) : super();
 

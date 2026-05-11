@@ -22,10 +22,11 @@ class QuestionAnswer<R> extends InheritedWidget {
   StepResult<R?>? _stepResult;
   StepResult<R?>? get stepResult => _stepResult;
   void setStepResult(R? result) {
+    final answerFormat = step.answerFormat;
     _stepResult = StepResult<R>(
       id: step.id,
       step: step,
-      title: step.answerFormat?.question,
+      title: answerFormat?.questionContent?.text ?? answerFormat?.question,
       result: result,
       startTime: startTime,
       endTime: DateTime.now(),

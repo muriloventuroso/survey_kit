@@ -149,14 +149,20 @@ class _ScaleAnswerViewState extends State<ScaleAnswerView>
       result = _scaleAnswerFormat.defaultValue;
       QuestionAnswer.of(context).setStepResult(result);
     }
-    final questionText = widget.questionStep.answerFormat?.question;
+    final answerFormat = widget.questionStep.answerFormat;
+    final questionText = answerFormat?.question;
+    final questionContent = answerFormat?.questionContent;
     return Padding(
       padding: const EdgeInsets.all(14.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          if (questionText != null) AnswerQuestionText(text: questionText),
+          if (questionText != null || questionContent != null)
+            AnswerQuestionText(
+              text: questionText,
+              textContent: questionContent,
+            ),
           if (widget.type == ScaleAnswerFormatType.rating)
             _buildStarRating(context, result)
           else

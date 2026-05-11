@@ -20,6 +20,7 @@ class BooleanAnswerFormat extends AnswerFormat {
     required this.negativeAnswer,
     this.result = BooleanResult.none,
     super.question,
+    super.questionContent,
     super.answerType = type,
   }) : super();
 

@@ -14,6 +14,7 @@ class TimeAnswerFormat extends AnswerFormat {
   const TimeAnswerFormat({
     this.defaultValue,
     super.question,
+    super.questionContent,
     super.answerType = type,
   }) : super();
 

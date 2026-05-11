@@ -56,13 +56,19 @@ class _DoubleAnswerViewState extends State<DoubleAnswerView>
 
   @override
   Widget build(BuildContext context) {
-    final questionText = widget.questionStep.answerFormat?.question;
+    final answerFormat = widget.questionStep.answerFormat;
+    final questionText = answerFormat?.question;
+    final questionContent = answerFormat?.questionContent;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 32),
       child: Column(
         children: [
-          if (questionText != null) AnswerQuestionText(text: questionText),
+          if (questionText != null || questionContent != null)
+            AnswerQuestionText(
+              text: questionText,
+              textContent: questionContent,
+            ),
           Container(
             width: MediaQuery.of(context).size.width,
             child: TextField(

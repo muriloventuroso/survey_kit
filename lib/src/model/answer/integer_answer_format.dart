@@ -20,6 +20,7 @@ class IntegerAnswerFormat extends AnswerFormat {
     this.min = minInt,
     this.max = maxInt,
     super.question,
+    super.questionContent,
     super.answerType = type,
   }) : super();
 

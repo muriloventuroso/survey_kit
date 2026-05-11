@@ -20,6 +20,7 @@ class DoubleAnswerFormat extends AnswerFormat {
     this.defaultValue,
     this.hint = '',
     super.question,
+    super.questionContent,
     super.answerType = type,
   }) : super();
 
