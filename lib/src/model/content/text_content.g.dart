@@ -25,7 +25,7 @@ Map<String, dynamic> _$TextContentToJson(TextContent instance) =>
       'fontSize': instance.fontSize,
       'textAlign': _$TextAlignEnumMap[instance.textAlign]!,
       'fontWeight': const FontWeightConverter().toJson(instance.fontWeight),
-      'type': instance.type,
+      'type': "text",
     };
 
 const _$TextAlignEnumMap = {

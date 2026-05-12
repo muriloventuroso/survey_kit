@@ -29,5 +29,5 @@ Map<String, dynamic> _$VideoContentToJson(VideoContent instance) =>
       'title': instance.title,
       'subtitle': instance.subtitle,
       'externalLink': instance.externalLink,
-      'type': instance.type,
+      'type': "video",
     };

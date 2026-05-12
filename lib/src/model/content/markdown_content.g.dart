@@ -13,5 +13,5 @@ Map<String, dynamic> _$MarkdownContentToJson(MarkdownContent instance) =>
     <String, dynamic>{
       'id': ?instance.id,
       'text': instance.text,
-      'type': instance.type,
+      'type': "markdown",
     };
