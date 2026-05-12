@@ -29,7 +29,7 @@ _$MultipleChoiceAutoCompleteAnswerFormatFromJson(Map<String, dynamic> json) =>
           : TextContent.fromJson(
               json['questionContent'] as Map<String, dynamic>,
             ),
-      answerType: json['type'] as String? ?? type,
+      answerType: json['type'] as String?,
     );
 
 Map<String, dynamic> _$MultipleChoiceAutoCompleteAnswerFormatToJson(

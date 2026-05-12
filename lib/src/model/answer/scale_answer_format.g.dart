@@ -19,7 +19,7 @@ ScaleAnswerFormat _$ScaleAnswerFormatFromJson(
   questionContent: json['questionContent'] == null
       ? null
       : TextContent.fromJson(json['questionContent'] as Map<String, dynamic>),
-  answerType: json['type'] as String? ?? type,
+  answerType: json['type'] as String?,
   formatType:
       $enumDecodeNullable(_$ScaleAnswerFormatTypeEnumMap, json['formatType']) ??
       ScaleAnswerFormatType.scale,

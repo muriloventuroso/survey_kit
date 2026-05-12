@@ -20,7 +20,7 @@ MultipleChoiceAnswerFormat _$MultipleChoiceAnswerFormatFromJson(
   questionContent: json['questionContent'] == null
       ? null
       : TextContent.fromJson(json['questionContent'] as Map<String, dynamic>),
-  answerType: json['type'] as String? ?? type,
+  answerType: json['type'] as String?,
 );
 
 Map<String, dynamic> _$MultipleChoiceAnswerFormatToJson(
