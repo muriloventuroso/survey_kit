@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide Step;
 import 'package:json_annotation/json_annotation.dart';
+import 'package:survey_kit/src/model/content/text_content.dart';
 import 'package:survey_kit/survey_kit.dart';
 
 part 'scale_answer_format.g.dart';
