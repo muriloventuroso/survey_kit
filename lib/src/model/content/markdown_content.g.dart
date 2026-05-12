@@ -10,4 +10,8 @@ MarkdownContent _$MarkdownContentFromJson(Map<String, dynamic> json) =>
     MarkdownContent(text: json['text'] as String, id: json['id'] as String?);
 
 Map<String, dynamic> _$MarkdownContentToJson(MarkdownContent instance) =>
-    <String, dynamic>{'id': ?instance.id, 'text': instance.text};
+    <String, dynamic>{
+      'id': ?instance.id,
+      'text': instance.text,
+      'type': instance.type,
+    };

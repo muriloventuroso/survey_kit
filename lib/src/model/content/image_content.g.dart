@@ -21,6 +21,7 @@ Map<String, dynamic> _$ImageContentToJson(ImageContent instance) =>
       'fit': _$BoxFitEnumMap[instance.fit],
       'width': instance.width,
       'height': instance.height,
+      'type': instance.type,
     };
 
 const _$BoxFitEnumMap = {

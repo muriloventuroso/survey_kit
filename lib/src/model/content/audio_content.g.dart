@@ -21,4 +21,5 @@ Map<String, dynamic> _$AudioContentToJson(AudioContent instance) =>
       'title': instance.title,
       'subtitle': instance.subtitle,
       'externalLink': instance.externalLink,
+      'type': instance.type,
     };
